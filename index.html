@@ -6,138 +6,7 @@
 <title>Cristhian Sánchez — Desarrollo Web</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0b; --bg2: #111114; --bg3: #18181c;
-    --gold: #c9a96e; --gold-light: #e2c898; --gold-dim: #8a6f3e;
-    --white: #f0ece4; --muted: #6b6b72;
-    --border: rgba(201,169,110,0.15); --border-s: rgba(201,169,110,0.3);
-    --ff-display: 'Playfair Display', Georgia, serif;
-    --ff-body: 'DM Sans', system-ui, sans-serif;
-    --ff-mono: 'DM Mono', monospace;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--white); font-family: var(--ff-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(10,10,11,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--ff-display); font-size: 1.3rem; color: var(--gold); text-decoration: none; }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--gold); }
-
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 0 4rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
-  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,169,110,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-  .hero-content { position: relative; max-width: 720px; }
-  .hero-tag { font-family: var(--ff-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
-  .hero-tag::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
-  h1 { font-family: var(--ff-display); font-size: clamp(2.8rem, 6.5vw, 5rem); font-weight: 400; line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-  h1 em { font-style: italic; color: var(--gold); }
-  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 500px; margin-bottom: 2.5rem; line-height: 1.85; }
-  .hero-cta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .btn { padding: 0.85rem 2.2rem; border-radius: 2px; font-family: var(--ff-body); font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; display: inline-block; }
-  .btn-gold { background: var(--gold); color: #0a0a0b; font-weight: 500; }
-  .btn-gold:hover { background: var(--gold-light); }
-  .btn-outline { background: transparent; border: 1px solid var(--border-s); color: var(--white); }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-  .hero-scroll { position: absolute; bottom: 3rem; right: 4rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: var(--ff-mono); }
-  .hero-scroll::after { content: ''; display: block; width: 1px; height: 60px; background: linear-gradient(to bottom, var(--muted), transparent); animation: scrollLine 2s ease-in-out infinite; }
-  @keyframes scrollLine { 0%, 100% { opacity: 0.3; transform: scaleY(0.7); } 50% { opacity: 1; transform: scaleY(1); } }
-
-  section { padding: 7rem 4rem; }
-  .section-label { font-family: var(--ff-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-  h2 { font-family: var(--ff-display); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.15; margin-bottom: 1rem; }
-
-  .about { background: var(--bg2); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
-  .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; font-size: 0.95rem; }
-  .about-text p strong { color: var(--white); font-weight: 500; }
-  .highlight-box { border-left: 2px solid var(--gold-dim); padding: 1rem 1.5rem; background: rgba(201,169,110,0.04); margin: 1.5rem 0; }
-  .highlight-box p { font-size: 0.87rem !important; font-style: italic; margin: 0 !important; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .stat { padding: 1.8rem; border: 1px solid var(--border); background: var(--bg3); transition: border-color 0.3s; }
-  .stat:hover { border-color: var(--border-s); }
-  .stat-num { font-family: var(--ff-display); font-size: 2.2rem; color: var(--gold); font-weight: 400; line-height: 1; margin-bottom: 0.4rem; }
-  .stat-label { font-size: 0.73rem; color: var(--muted); letter-spacing: 0.07em; text-transform: uppercase; line-height: 1.4; }
-
-  .stack-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
-  .tag { padding: 0.45rem 1rem; border: 1px solid var(--border); font-family: var(--ff-mono); font-size: 0.75rem; color: var(--muted); transition: all 0.3s; background: var(--bg3); }
-  .tag:hover { color: var(--gold); border-color: var(--gold-dim); }
-  .tag.learning { border-style: dashed; opacity: 0.55; }
-
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5px; margin-top: 3rem; border: 1px solid var(--border); }
-  .project-card { background: var(--bg2); padding: 2.2rem; position: relative; overflow: hidden; transition: background 0.3s; text-decoration: none; color: inherit; display: block; }
-  .project-card:hover { background: var(--bg3); }
-  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity 0.3s; }
-  .project-card:hover::before { opacity: 1; }
-  .project-num { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--gold-dim); letter-spacing: 0.2em; margin-bottom: 1.1rem; }
-  .project-title { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.6rem; line-height: 1.2; }
-  .project-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
-  .project-tag { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--gold-dim); }
-  .project-tag:not(:last-child)::after { content: ' /'; color: var(--border-s); }
-  .project-link-btn { font-family: var(--ff-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--gold); border-bottom: 1px solid var(--border-s); padding-bottom: 2px; }
-  .project-arrow { position: absolute; bottom: 1.8rem; right: 2rem; font-size: 1rem; color: var(--gold-dim); transition: all 0.3s; opacity: 0; }
-  .project-card:hover .project-arrow { opacity: 1; transform: translate(3px,-3px); }
-  .project-cta { background: var(--bg2); padding: 2.2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 240px; border: 1px dashed var(--border-s); transition: background 0.3s; text-decoration: none; color: inherit; }
-  .project-cta:hover { background: var(--bg3); }
-
-  .pricing { background: var(--bg2); }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 3rem; border: 1px solid var(--border); }
-  .pricing-card { background: var(--bg2); padding: 2.5rem 2rem; }
-  .pricing-card.featured { background: var(--bg3); border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
-  .pricing-badge { display: inline-block; font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #0a0a0b; background: var(--gold); padding: 0.28rem 0.8rem; margin-bottom: 1.2rem; }
-  .pricing-name { font-family: var(--ff-display); font-size: 1.35rem; font-weight: 400; margin-bottom: 0.4rem; }
-  .pricing-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.65; }
-  .pricing-price { display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: 1.8rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-  .price-from { font-size: 0.7rem; color: var(--muted); font-family: var(--ff-mono); }
-  .price-amount { font-family: var(--ff-display); font-size: 1.8rem; color: var(--gold); font-weight: 400; line-height: 1; }
-  .pricing-features { list-style: none; margin-bottom: 1.8rem; }
-  .pricing-features li { font-size: 0.81rem; color: var(--muted); padding: 0.52rem 0; display: flex; align-items: flex-start; gap: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.03); line-height: 1.45; }
-  .pricing-features li::before { content: '—'; color: var(--gold-dim); font-family: var(--ff-mono); flex-shrink: 0; }
-
-  .addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; border: 1px solid var(--border); margin-top: 1.5rem; }
-  .addon { padding: 1.4rem 1.8rem; background: var(--bg2); }
-  .addon-label { font-size: 0.68rem; color: var(--gold); font-family: var(--ff-mono); margin-bottom: 0.35rem; letter-spacing: 0.1em; }
-  .addon-name { font-family: var(--ff-display); font-size: 0.98rem; margin-bottom: 0.3rem; }
-  .addon-desc { color: var(--muted); font-size: 0.77rem; line-height: 1.5; }
-  .addon-price { color: var(--gold); margin-top: 0.7rem; font-family: var(--ff-display); font-size: 1.1rem; }
-  .addon-price span { font-size: 0.7rem; color: var(--muted); font-family: var(--ff-body); }
-
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
-  .contact-info p { color: var(--muted); line-height: 1.9; margin-bottom: 2rem; font-size: 0.9rem; }
-  .contact-links { display: flex; flex-direction: column; }
-  .contact-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--muted); font-size: 0.84rem; transition: color 0.3s; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
-  .contact-link:hover { color: var(--gold); }
-  .contact-link-label { font-family: var(--ff-mono); font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); min-width: 70px; }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  label { font-family: var(--ff-mono); font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); }
-  input, textarea, select { background: var(--bg3); border: 1px solid var(--border); color: var(--white); font-family: var(--ff-body); font-size: 0.87rem; padding: 0.78rem 1rem; font-weight: 300; transition: border-color 0.3s; outline: none; resize: vertical; width: 100%; }
-  input:focus, textarea:focus, select:focus { border-color: var(--gold-dim); }
-  input::placeholder, textarea::placeholder { color: var(--muted); }
-  select option { background: var(--bg3); }
-  textarea { min-height: 115px; }
-
-  footer { padding: 2.5rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  footer p { font-size: 0.74rem; color: var(--muted); font-family: var(--ff-mono); }
-
-  .fade-up { opacity: 0; transform: translateY(28px); animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-  .d1{animation-delay:0.1s} .d2{animation-delay:0.25s} .d3{animation-delay:0.4s}
-
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    section, .hero { padding: 5rem 1.5rem; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
-    .hero-scroll { display: none; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -165,7 +34,7 @@
     </p>
     <div class="hero-cta fade-up d3">
       <a href="#projects" class="btn btn-gold">Ver mi trabajo</a>
-      <a href="#contact" class="btn btn-outline">Cotizar proyecto</a>
+      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web" target="_blank" class="btn btn-outline">Cotizar por WhatsApp</a>
     </div>
   </div>
   <div class="hero-scroll">scroll</div>
@@ -194,7 +63,7 @@
           intermediarios — tratas conmigo de principio a fin.
         </p>
       </div>
-      <a href="#contact" class="btn btn-outline">Hablemos →</a>
+      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20quiero%20hablar%20de%20mi%20proyecto" target="_blank" class="btn btn-outline">Hablemos por WhatsApp →</a>
     </div>
     <div class="about-stats">
       <div class="stat">
@@ -243,23 +112,23 @@
 
   <div class="projects-grid">
 
-    <a href="TU-ENLACE-1" target="_blank" class="project-card">
+    <a href="https://cristhian-sanchez.github.io/Aroli-Restaurant-/" target="_blank" class="project-card">
       <div class="project-num">001</div>
-      <div class="project-title">Nombre de tu proyecto</div>
-      <p class="project-desc">Describe aquí qué es esta página, qué hace y qué aprendiste al construirla. Una o dos frases es suficiente.</p>
+      <div class="project-title">Aroli Restaurant - Experiencia Digital Gourmet</div>
+      <p class="project-desc">Desarrollo web integral que digitaliza la carta y servicios de un restaurante gourmet. Incluye galerías dinámicas, gestión de eventos y una interfaz optimizada para dispositivos móviles.</p>
       <div class="project-tags">
-        <span class="project-tag">HTML</span>
-        <span class="project-tag">CSS</span>
+        <span class="project-tag">HTML5</span>
+        <span class="project-tag">CSS3</span>
         <span class="project-tag">JavaScript</span>
       </div>
       <span class="project-link-btn">Ver página →</span>
       <span class="project-arrow">↗</span>
     </a>
 
-    <a href="TU-ENLACE-2" target="_blank" class="project-card">
+    <a href="https://cristhian-sanchez.github.io/Barberia/" target="_blank" class="project-card">
       <div class="project-num">002</div>
-      <div class="project-title">Nombre de tu proyecto</div>
-      <p class="project-desc">Describe aquí qué es esta página, qué hace y qué aprendiste al construirla. Una o dos frases es suficiente.</p>
+      <div class="project-title">BarberKing - Experiencia Digital Premium</div>
+      <p class="project-desc">Solución web diseñada para negocios de cuidado personal que buscan profesionalizar su presencia online. Incluye un catálogo interactivo de servicios (cortes, barba y tratamientos), un módulo de fidelización mediante promociones visibles y llamados a la acción (CTA) estratégicos para agendamiento directo vía WhatsApp.</p>
       <div class="project-tags">
         <span class="project-tag">HTML</span>
         <span class="project-tag">CSS</span>
@@ -269,10 +138,10 @@
       <span class="project-arrow">↗</span>
     </a>
 
-    <a href="TU-ENLACE-3" target="_blank" class="project-card">
+    <a href="https://github.com/cristhian-sanchez/Spa/deployments/github-pages" target="_blank" class="project-card">
       <div class="project-num">003</div>
-      <div class="project-title">Nombre de tu proyecto</div>
-      <p class="project-desc">Describe aquí qué es esta página, qué hace y qué aprendiste al construirla. Una o dos frases es suficiente.</p>
+      <div class="project-title">Serenity Spa - Landing Page</div>
+      <p class="project-desc">Desarrollo de una interfaz web minimalista y relajante diseñada para servicios de bienestar. El proyecto utiliza una paleta de colores suaves y una arquitectura de información clara para transmitir tranquilidad, facilitando la consulta de tratamientos estéticos y masajes terapéuticos.</p>
       <div class="project-tags">
         <span class="project-tag">HTML</span>
         <span class="project-tag">CSS</span>
@@ -282,10 +151,10 @@
       <span class="project-arrow">↗</span>
     </a>
 
-    <a href="#contact" class="project-cta">
+    <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20quiero%20una%20p%C3%A1gina%20web" target="_blank" class="project-cta">
       <div style="font-family:var(--ff-display); font-size:1.05rem; margin-bottom:0.7rem;">¿Quieres tener presencia en internet?</div>
       <p style="font-size:0.81rem; color:var(--muted); margin-bottom:1.4rem; max-width:200px;">Cuéntame tu idea y lo construimos juntos</p>
-      <span class="btn btn-outline" style="font-size:0.72rem; padding:0.6rem 1.5rem;">Cotizar →</span>
+      <span class="btn btn-outline" style="font-size:0.72rem; padding:0.6rem 1.5rem;">Cotizar por WhatsApp →</span>
     </a>
 
   </div>
@@ -295,38 +164,43 @@
 <section class="pricing" id="pricing">
   <div class="section-label">Inversión</div>
   <h2>Precios <em>claros y justos</em></h2>
-  <p style="color:var(--muted); max-width:520px; margin-top:0.4rem; font-size:0.87rem; line-height:1.75;">
-    Precios en pesos colombianos. Hablo contigo antes de empezar, entiendo lo que necesitas
-    y te doy un valor exacto. Puedo dividir el pago: mitad al inicio, mitad al entregar.
+  <p style="color:var(--muted); max-width:580px; margin-top:0.4rem; font-size:0.87rem; line-height:1.75;">
+    Precios en pesos colombianos. <strong style="color:var(--white);">Dominio y hosting del primer año incluidos en todos los planes.</strong>
+    Hablo contigo antes de empezar, entiendo lo que necesitas y te doy un valor exacto.
+    Puedo dividir el pago: mitad al inicio, mitad al entregar.
   </p>
 
   <div class="pricing-grid">
+
+    <!-- LANDING -->
     <div class="pricing-card">
       <div class="pricing-name">Landing Page</div>
       <p class="pricing-desc">Una sola página para presentar tu negocio o emprendimiento. Ideal para tener presencia rápida en internet.</p>
       <div class="pricing-price">
         <span class="price-from">desde</span>
-        <span class="price-amount">$150.000</span>
+        <span class="price-amount">$400.000</span>
         <span class="price-from">COP</span>
       </div>
       <ul class="pricing-features">
         <li>Diseño a tu gusto, no plantillas</li>
         <li>Se ve bien en celular y computador</li>
-        <li>Sección de contacto o formulario</li>
+        <li>Sección de contacto con WhatsApp</li>
         <li>Links a redes sociales</li>
         <li>1 ronda de ajustes incluida</li>
+        <li>Dominio + hosting primer año <span class="included-badge">incluido</span></li>
         <li>Entrega en 5–8 días hábiles</li>
       </ul>
-      <a href="#contact" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20una%20Landing%20Page" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
     </div>
 
+    <!-- SITIO WEB -->
     <div class="pricing-card featured">
       <div class="pricing-badge">Más pedido</div>
       <div class="pricing-name">Sitio Web</div>
       <p class="pricing-desc">Varias páginas o secciones para negocios, emprendedores o personas que quieren mostrar más contenido.</p>
       <div class="pricing-price">
         <span class="price-from">desde</span>
-        <span class="price-amount">$350.000</span>
+        <span class="price-amount">$750.000</span>
         <span class="price-from">COP</span>
       </div>
       <ul class="pricing-features">
@@ -336,18 +210,20 @@
         <li>100% adaptado a celular</li>
         <li>Carga rápida y optimizada</li>
         <li>2 rondas de ajustes incluidas</li>
+        <li>Dominio + hosting primer año <span class="included-badge">incluido</span></li>
         <li>Soporte 15 días tras la entrega</li>
         <li>Entrega en 10–15 días hábiles</li>
       </ul>
-      <a href="#contact" class="btn btn-gold" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20un%20Sitio%20Web" target="_blank" class="btn btn-gold" style="width:100%; text-align:center; display:block;">Cotizar →</a>
     </div>
 
+    <!-- CON FUNCIONALIDADES -->
     <div class="pricing-card">
       <div class="pricing-name">Con funcionalidades</div>
       <p class="pricing-desc">Para proyectos que necesitan algo más: catálogo de productos, formularios avanzados, sección de blog u otras funciones.</p>
       <div class="pricing-price">
         <span class="price-from">desde</span>
-        <span class="price-amount">$600.000</span>
+        <span class="price-amount">$1.200.000</span>
         <span class="price-from">COP</span>
       </div>
       <ul class="pricing-features">
@@ -357,11 +233,13 @@
         <li>Botón de WhatsApp integrado</li>
         <li>Sección de blog o noticias</li>
         <li>Ajustes hasta que quedes conforme</li>
+        <li>Dominio + hosting primer año <span class="included-badge">incluido</span></li>
         <li>Soporte 30 días post-entrega</li>
         <li>Tiempo según el proyecto</li>
       </ul>
-      <a href="#contact" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20un%20sitio%20con%20funcionalidades" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
     </div>
+
   </div>
 
   <br><br>
@@ -371,13 +249,13 @@
       <div class="addon-label">Cambios</div>
       <div class="addon-name">Ajustes puntuales</div>
       <div class="addon-desc">Textos, fotos, colores o secciones en tu página ya existente</div>
-      <div class="addon-price">$30.000 <span>– $80.000</span></div>
+      <div class="addon-price">$60.000 <span>– $150.000</span></div>
     </div>
     <div class="addon">
       <div class="addon-label">Mantenimiento</div>
       <div class="addon-name">Plan mensual</div>
       <div class="addon-desc">Actualizo contenidos y mantengo tu página andando bien</div>
-      <div class="addon-price">$80.000 <span>/ mes</span></div>
+      <div class="addon-price">$150.000 <span>/ mes</span></div>
     </div>
     <div class="addon">
       <div class="addon-label">Urgente</div>
@@ -386,32 +264,33 @@
       <div class="addon-price">+30% <span>del valor</span></div>
     </div>
     <div class="addon">
-      <div class="addon-label">Otro</div>
-      <div class="addon-name">¿Algo diferente?</div>
-      <div class="addon-desc">Tienes algo en mente que no está acá — escríbeme y lo miramos</div>
-      <div class="addon-price" style="font-size:0.88rem; font-family:var(--ff-body);">A convenir</div>
+      <div class="addon-label">Renovación</div>
+      <div class="addon-name">Hosting anual</div>
+      <div class="addon-desc">Renovación del dominio y hosting después del primer año</div>
+      <div class="addon-price">$120.000 <span>/ año</span></div>
     </div>
   </div>
 
-  <div style="margin-top:2rem; padding:1.2rem 1.8rem; border:1px solid var(--border); background:rgba(201,169,110,0.04); max-width:580px;">
+  <div style="margin-top:2rem; padding:1.2rem 1.8rem; border:1px solid var(--border); background:rgba(201,169,110,0.04); max-width:620px;">
     <p style="font-size:0.81rem; color:var(--muted); line-height:1.75;">
-      <strong style="color:var(--white); font-weight:500;">¿Cómo funciona?</strong> Primero hablamos, entiendo tu proyecto y te doy un precio
+      <strong style="color:var(--white); font-weight:500;">¿Cómo funciona?</strong> Primero hablamos por WhatsApp, entiendo tu proyecto y te doy un precio
       exacto antes de empezar. Puedo recibir pago por Nequi, Bancolombia o efectivo.
-      Pago dividido disponible: 50% al inicio, 50% al entregar.
+      Pago dividido disponible: 50% al inicio, 50% al entregar. El dominio y hosting del primer año
+      van incluidos en el precio — no tienes que pagar nada aparte.
     </p>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section class="contact-section" id="contact">
   <div class="section-label">Contacto</div>
   <h2>Hablemos de <em>tu proyecto</em></h2>
   <div class="contact-grid">
+
     <div class="contact-info">
       <p>
-        Cuéntame qué necesitas y te respondo en menos de 2 horas.
-        Sin tecnicismos ni rodeos. Hablamos como personas y
-        encontramos la mejor solución para tu presupuesto.
+        La forma más rápida de hablar conmigo es por WhatsApp. Te respondo en menos de 2 horas,
+        sin tecnicismos ni rodeos. Cuéntame tu idea y lo miramos juntos.
       </p>
       <div class="contact-links">
         <a class="contact-link" href="mailto:cristhiansanchez.linares@gmail.com">
@@ -433,76 +312,48 @@
       </div>
     </div>
 
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-group">
-        <label for="name">Tu nombre</label>
-        <input type="text" id="name" placeholder="¿Cómo te llamas?" required>
-      </div>
-      <div class="form-group">
-        <label for="contact_info">Email o WhatsApp</label>
-        <input type="text" id="contact_info" placeholder="Para poder responderte">
-      </div>
-      <div class="form-group">
-        <label for="service">¿Qué necesitas?</label>
-        <select id="service">
-          <option value="">Selecciona una opción...</option>
-          <option>Landing Page (desde $150.000)</option>
-          <option>Sitio Web (desde $350.000)</option>
-          <option>Con funcionalidades (desde $600.000)</option>
-          <option>Ajustes a página existente</option>
-          <option>Mantenimiento mensual</option>
-          <option>No sé bien, quiero asesoría</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Cuéntame tu idea</label>
-        <textarea id="message" placeholder="¿Qué tipo de negocio tienes? ¿Tienes algún ejemplo de página que te guste? ¿Hay alguna fecha límite?"></textarea>
-      </div>
-      <button type="submit" class="btn btn-gold" style="width:100%; border:none;" id="submit-btn">
-        Enviar mensaje →
-      </button>
-    </form>
+    <!-- WhatsApp CTA panel -->
+    <div class="wa-panel">
+      <div class="wa-panel-title">¿Listo para tener tu<br><em>página web?</em></div>
+      <p class="wa-panel-desc">
+        Escríbeme directo por WhatsApp. No necesitas llenar formularios
+        ni esperar días — hablamos ahora y arrancamos cuando quieras.
+      </p>
+      <ul class="wa-panel-steps">
+        <li>
+          <span class="wa-step-num">1</span>
+          Cuéntame qué tipo de negocio o proyecto tienes
+        </li>
+        <li>
+          <span class="wa-step-num">2</span>
+          Te doy un precio exacto sin compromiso
+        </li>
+        <li>
+          <span class="wa-step-num">3</span>
+          Si te convence, arrancamos — dominio y hosting incluidos
+        </li>
+      </ul>
+      <a
+        href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web.%20Tengo%20un%20negocio%20de%3A%20"
+        target="_blank"
+        class="wa-big-btn"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+      <p class="wa-note">Respondo en menos de 2 horas · Lunes a sábado</p>
+    </div>
+
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Cristhian David Sánchez Linares</p>
+  <p>© 2026 Cristhian David Sánchez Linares</p>
   <p>Hecho con dedicación desde Pasto, Colombia 🇨🇴</p>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.07 });
-
-  document.querySelectorAll('.stat, .project-card, .project-cta, .pricing-card, .addon, .tag').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(18px)';
-    el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
-    observer.observe(el);
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = '¡Listo! Te respondo pronto ✓';
-    btn.style.background = '#2d5a2d';
-    btn.style.color = '#c8e6c8';
-    btn.disabled = true;
-  }
-</script>
+<script src="main.js"></script>
 </body>
 </html>
