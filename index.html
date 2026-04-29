@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristhian Sánchez — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0b;
+    --bg2: #111114;
+    --bg3: #18181c;
+    --gold: #c9a96e;
+    --gold-light: #e2c898;
+    --gold-dim: #8a6f3e;
+    --white: #f0ece4;
+    --muted: #6b6b72;
+    --border: rgba(201,169,110,0.15);
+    --border-s: rgba(201,169,110,0.3);
+    --ff-display: 'Playfair Display', Georgia, serif;
+    --ff-body: 'DM Sans', system-ui, sans-serif;
+    --ff-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--ff-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,169,110,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,110,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; max-width: 700px; }
+
+  .hero-tag {
+    font-family: var(--ff-mono);
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.85rem 2.2rem;
+    border-radius: 2px;
+    font-family: var(--ff-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: #0a0a0b;
+    font-weight: 500;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-s);
+    color: var(--white);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-scroll {
+    position: absolute; bottom: 3rem; right: 4rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: var(--ff-mono);
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block; width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 4rem; }
+
+  .section-label {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p strong { color: var(--white); font-weight: 500; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--bg3);
+    transition: border-color 0.3s;
+  }
+  .stat:hover { border-color: var(--border-s); }
+
+  .stat-num {
+    font-family: var(--ff-display);
+    font-size: 2.8rem;
+    color: var(--gold);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── STACK ── */
+  .stack-grid {
+    display: flex; flex-wrap: wrap; gap: 0.7rem;
+    margin-top: 2.5rem;
+  }
+
+  .tag {
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: var(--ff-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    transition: all 0.3s;
+    background: var(--bg3);
+  }
+  .tag:hover { color: var(--gold); border-color: var(--gold-dim); }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5px;
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .project-card:hover { background: var(--bg3); }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-num {
+    font-family: var(--ff-mono);
+    font-size: 0.65rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-title {
+    font-family: var(--ff-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+
+  .project-tag {
+    font-family: var(--ff-mono);
+    font-size: 0.68rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.1em;
+  }
+  .project-tag:not(:last-child)::after {
+    content: ' /';
+    color: var(--border-s);
+  }
+
+  .project-arrow {
+    position: absolute;
+    bottom: 2.5rem; right: 2.5rem;
+    font-size: 1.2rem;
+    color: var(--gold-dim);
+    transition: all 0.3s;
+    opacity: 0;
+  }
+  .project-card:hover .project-arrow { opacity: 1; transform: translate(3px, -3px); }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--bg2); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+  }
+
+  .pricing-card {
+    background: var(--bg2);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .pricing-card.featured {
+    background: var(--bg3);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .pricing-badge {
+    display: inline-block;
+    font-family: var(--ff-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0a0a0b;
+    background: var(--gold);
+    padding: 0.3rem 0.9rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1px;
+  }
+
+  .pricing-name {
+    font-family: var(--ff-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .pricing-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price-from {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: var(--ff-mono);
+  }
+
+  .price-amount {
+    font-family: var(--ff-display);
+    font-size: 3rem;
+    color: var(--gold);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .price-cur {
+    font-size: 1.2rem;
+    color: var(--gold-dim);
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing-features li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 0.6rem 0;
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    line-height: 1.5;
+  }
+
+  .pricing-features li::before {
+    content: '—';
+    color: var(--gold-dim);
+    font-family: var(--ff-mono);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .contact-info p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.88rem;
+    transition: color 0.3s;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-link:hover { color: var(--gold); }
+
+  .contact-link-label {
+    font-family: var(--ff-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    min-width: 60px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  label {
+    font-family: var(--ff-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  input, textarea, select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--white);
+    font-family: var(--ff-body);
+    font-size: 0.9rem;
+    padding: 0.85rem 1.1rem;
+    font-weight: 300;
+    transition: border-color 0.3s;
+    outline: none;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--gold-dim);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--muted);
+  }
+
+  select option { background: var(--bg3); }
+
+  textarea { min-height: 130px; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--ff-mono);
+  }
+
+  footer a {
+    color: var(--gold-dim);
+    text-decoration: none;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    section, .hero { padding: 5rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    .hero-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">cs.dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#pricing">Precios</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag fade-up">Frontend Developer · Pasto, Colombia</div>
+    <h1 class="fade-up delay-1">Cristhian<br><em>Sánchez</em></h1>
+    <p class="hero-desc fade-up delay-2">
+      Diseño y construyo interfaces web que combinan estética refinada con 
+      rendimiento sólido. Cada línea de código tiene un propósito.
+    </p>
+    <div class="hero-cta fade-up delay-3">
+      <a href="#projects" class="btn btn-gold">Ver proyectos</a>
+      <a href="#contact" class="btn btn-outline">Hablemos</a>
+    </div>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">Sobre mí</div>
+  <h2>Código con <em>criterio</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Soy <strong>Cristhian Sánchez</strong>, desarrollador Frontend con base en Pasto, Colombia. 
+        Me especializo en construir experiencias web modernas, rápidas y accesibles 
+        que realmente conectan con el usuario.
+      </p>
+      <p>
+        Trabajo con tecnologías como <strong>React, Next.js, Vue</strong> y CSS avanzado. 
+        Me importa tanto el código limpio como el resultado visual — porque 
+        una interfaz hermosa que carga lento no sirve de nada.
+      </p>
+      <p>
+        Disponible para proyectos freelance, colaboraciones y desarrollo de 
+        productos digitales para negocios de todo tamaño.
+      </p>
+      <br>
+      <a href="#contact" class="btn btn-outline">Trabajemos juntos →</a>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Proyectos entregados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">48h</div>
+        <div class="stat-label">Tiempo de respuesta</div>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <div class="section-label">Stack tecnológico</div>
+  <div class="stack-grid">
+    <span class="tag">HTML5</span>
+    <span class="tag">CSS3 / Sass</span>
+    <span class="tag">JavaScript ES6+</span>
+    <span class="tag">TypeScript</span>
+    <span class="tag">React</span>
+    <span class="tag">Next.js</span>
+    <span class="tag">Vue.js</span>
+    <span class="tag">Tailwind CSS</span>
+    <span class="tag">Framer Motion</span>
+    <span class="tag">Git / GitHub</span>
+    <span class="tag">Figma</span>
+    <span class="tag">Node.js</span>
+    <span class="tag">REST APIs</span>
+    <span class="tag">WordPress</span>
+    <span class="tag">Vercel / Netlify</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portafolio</div>
+  <h2>Proyectos <em>destacados</em></h2>
+
+  <div class="projects-grid">
+    <a href="#" class="project-card">
+      <div class="project-num">001</div>
+      <div class="project-title">E-commerce Boutique</div>
+      <p class="project-desc">Tienda online para marca de moda local con carrito, pasarela de pago y panel admin. Incrementó ventas en 40% el primer mes.</p>
+      <div class="project-tags">
+        <span class="project-tag">Next.js</span>
+        <span class="project-tag">Stripe</span>
+        <span class="project-tag">Tailwind</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="#" class="project-card">
+      <div class="project-num">002</div>
+      <div class="project-title">Dashboard Analytics</div>
+      <p class="project-desc">Panel de control para startup fintech con visualización de datos en tiempo real, reportes exportables y roles de usuario.</p>
+      <div class="project-tags">
+        <span class="project-tag">React</span>
+        <span class="project-tag">D3.js</span>
+        <span class="project-tag">TypeScript</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="#" class="project-card">
+      <div class="project-num">003</div>
+      <div class="project-title">Landing Inmobiliaria</div>
+      <p class="project-desc">Sitio de alta conversión para agencia de finca raíz con galería interactiva, formulario de contacto y mapa integrado.</p>
+      <div class="project-tags">
+        <span class="project-tag">Vue.js</span>
+        <span class="project-tag">GSAP</span>
+        <span class="project-tag">Maps API</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="#" class="project-card">
+      <div class="project-num">004</div>
+      <div class="project-title">App Restaurante</div>
+      <p class="project-desc">Menú digital con pedidos online, sistema de reservas y panel de gestión para restaurante en Pasto. PWA optimizada para móvil.</p>
+      <div class="project-tags">
+        <span class="project-tag">React</span>
+        <span class="project-tag">PWA</span>
+        <span class="project-tag">Firebase</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="#" class="project-card">
+      <div class="project-num">005</div>
+      <div class="project-title">Blog Corporativo</div>
+      <p class="project-desc">Plataforma de contenidos para empresa de consultoría con SEO avanzado, CMS headless y velocidad de carga excepcional.</p>
+      <div class="project-tags">
+        <span class="project-tag">Next.js</span>
+        <span class="project-tag">Contentful</span>
+        <span class="project-tag">SEO</span>
+      </div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="#contact" class="project-card" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:280px;">
+      <div style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:400; margin-bottom:0.8rem;">¿Tu proyecto aquí?</div>
+      <p style="font-size:0.85rem; color:#6b6b72; margin-bottom:1.5rem;">Hablemos de lo que quieres construir</p>
+      <span class="btn btn-outline" style="font-size:0.75rem;">Contactar →</span>
+    </a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-label">Inversión</div>
+  <h2>Servicios & <em>Precios</em></h2>
+  <p style="color:var(--muted); max-width:500px; margin-top:0.5rem; font-size:0.9rem;">
+    Precios en pesos colombianos (COP). Cada proyecto es único — estos son valores de referencia. 
+    Contáctame para una cotización personalizada.
+  </p>
+
+  <div class="pricing-grid">
+    <!-- BÁSICO -->
+    <div class="pricing-card">
+      <div class="pricing-name">Landing Page</div>
+      <p class="pricing-desc">Página de presentación para tu negocio o proyecto personal. Diseño a medida, optimizada y lista para convertir.</p>
+      <div class="pricing-price">
+        <span class="price-from">desde</span>
+        <span class="price-amount" style="font-size:2rem;">$800.000</span>
+        <span class="price-from">COP</span>
+      </div>
+      <ul class="pricing-features">
+        <li>Diseño personalizado (no plantillas)</li>
+        <li>Responsive para todos los dispositivos</li>
+        <li>Optimización SEO básica</li>
+        <li>Formulario de contacto funcional</li>
+        <li>Velocidad de carga optimizada</li>
+        <li>1 ronda de revisiones</li>
+        <li>Entrega en 7–10 días hábiles</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+    </div>
+
+    <!-- RECOMENDADO -->
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Más popular</div>
+      <div class="pricing-name">Sitio Web Completo</div>
+      <p class="pricing-desc">Sitio multi-página profesional para empresas, portafolios o proyectos que necesitan más alcance y funcionalidad.</p>
+      <div class="pricing-price">
+        <span class="price-from">desde</span>
+        <span class="price-amount" style="font-size:2rem;">$2.500.000</span>
+        <span class="price-from">COP</span>
+      </div>
+      <ul class="pricing-features">
+        <li>Hasta 6 secciones / páginas</li>
+        <li>Diseño UI/UX completo en Figma</li>
+        <li>Animaciones e interacciones</li>
+        <li>SEO técnico avanzado</li>
+        <li>Blog o CMS integrado</li>
+        <li>Integración con redes sociales</li>
+        <li>3 rondas de revisiones</li>
+        <li>Soporte 30 días post-entrega</li>
+        <li>Entrega en 15–20 días hábiles</li>
+      </ul>
+      <a href="#contact" class="btn btn-gold" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="pricing-card">
+      <div class="pricing-name">E-commerce / App Web</div>
+      <p class="pricing-desc">Soluciones avanzadas para negocios digitales: tiendas online, dashboards, aplicaciones web a medida.</p>
+      <div class="pricing-price">
+        <span class="price-from">desde</span>
+        <span class="price-amount" style="font-size:2rem;">$6.000.000</span>
+        <span class="price-from">COP</span>
+      </div>
+      <ul class="pricing-features">
+        <li>Arquitectura frontend escalable</li>
+        <li>Carrito y pasarela de pagos</li>
+        <li>Panel de administración</li>
+        <li>Autenticación de usuarios</li>
+        <li>Integración con APIs externas</li>
+        <li>Optimización de rendimiento</li>
+        <li>Revisiones ilimitadas</li>
+        <li>Soporte 60 días post-entrega</li>
+        <li>Entrega según alcance del proyecto</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <br><br>
+  <div class="section-label">Servicios adicionales</div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1px; border:1px solid var(--border); margin-top:1.5rem;">
+    <div style="padding:1.5rem 2rem; background:var(--bg2);">
+      <div style="font-size:0.78rem; color:var(--gold); font-family:var(--ff-mono); margin-bottom:0.5rem;">Mantenimiento</div>
+      <div style="font-family:var(--ff-display); font-size:1.1rem; margin-bottom:0.3rem;">Plan mensual</div>
+      <div style="color:var(--muted); font-size:0.82rem;">Actualizaciones, backups y soporte continuo</div>
+      <div style="color:var(--gold); margin-top:0.8rem; font-family:var(--ff-display); font-size:1.3rem;">$350.000 <span style="font-size:0.75rem;color:var(--muted);">/ mes</span></div>
+    </div>
+    <div style="padding:1.5rem 2rem; background:var(--bg2);">
+      <div style="font-size:0.78rem; color:var(--gold); font-family:var(--ff-mono); margin-bottom:0.5rem;">Diseño UI/UX</div>
+      <div style="font-family:var(--ff-display); font-size:1.1rem; margin-bottom:0.3rem;">Mockups en Figma</div>
+      <div style="color:var(--muted); font-size:0.82rem;">Prototipos interactivos y sistema de diseño</div>
+      <div style="color:var(--gold); margin-top:0.8rem; font-family:var(--ff-display); font-size:1.3rem;">$600.000 <span style="font-size:0.75rem;color:var(--muted);">/ proyecto</span></div>
+    </div>
+    <div style="padding:1.5rem 2rem; background:var(--bg2);">
+      <div style="font-size:0.78rem; color:var(--gold); font-family:var(--ff-mono); margin-bottom:0.5rem;">SEO</div>
+      <div style="font-family:var(--ff-display); font-size:1.1rem; margin-bottom:0.3rem;">Posicionamiento web</div>
+      <div style="color:var(--muted); font-size:0.82rem;">Auditoría, optimización técnica y reporte</div>
+      <div style="color:var(--gold); margin-top:0.8rem; font-family:var(--ff-display); font-size:1.3rem;">$450.000 <span style="font-size:0.75rem;color:var(--muted);">/ mes</span></div>
+    </div>
+    <div style="padding:1.5rem 2rem; background:var(--bg2);">
+      <div style="font-size:0.78rem; color:var(--gold); font-family:var(--ff-mono); margin-bottom:0.5rem;">Urgente</div>
+      <div style="font-family:var(--ff-display); font-size:1.1rem; margin-bottom:0.3rem;">Entrega express</div>
+      <div style="color:var(--muted); font-size:0.82rem;">Entrega en 48–72h para cambios puntuales</div>
+      <div style="color:var(--gold); margin-top:0.8rem; font-family:var(--ff-display); font-size:1.3rem;">+50% <span style="font-size:0.75rem;color:var(--muted);">del valor base</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contacto</div>
+  <h2>¿Tienes un <em>proyecto</em>?</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Cuéntame qué quieres construir. Respondo en menos de 48 horas y te envío una propuesta personalizada sin compromiso.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:cristhian@example.com">
+          <span class="contact-link-label">Email</span>
+          cristhian@example.com
+        </a>
+        <a class="contact-link" href="#">
+          <span class="contact-link-label">WhatsApp</span>
+          +57 300 000 0000
+        </a>
+        <a class="contact-link" href="#">
+          <span class="contact-link-label">GitHub</span>
+          github.com/cristhiansanchez
+        </a>
+        <a class="contact-link" href="#">
+          <span class="contact-link-label">LinkedIn</span>
+          linkedin.com/in/cristhiansanchez
+        </a>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" placeholder="Tu nombre completo">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label for="service">Servicio de interés</label>
+        <select id="service">
+          <option value="">Selecciona una opción...</option>
+          <option>Landing Page ($300+)</option>
+          <option>Sitio Web Completo ($700+)</option>
+          <option>E-commerce / App Web ($1,500+)</option>
+          <option>Mantenimiento mensual</option>
+          <option>Otro / Lo que necesito</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Cuéntame tu proyecto</label>
+        <textarea id="message" placeholder="¿Qué quieres construir? ¿Tienes referentes visuales? ¿Hay algún deadline?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%;" onclick="alert('¡Mensaje enviado! Pronto me pondré en contacto.')">
+        Enviar mensaje →
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Cristhian Sánchez · <span style="color:var(--gold-dim)">cs.dev</span></p>
+  <p>Diseñado & desarrollado con ♥ en Pasto, Colombia</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.stat, .project-card, .pricing-card, .tag').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
