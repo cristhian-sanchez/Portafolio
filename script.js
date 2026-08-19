@@ -1,4 +1,3 @@
-
 // Scroll reveal animation
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
