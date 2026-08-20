@@ -3,42 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cristhian Sánchez — Desarrollo Web en Pasto, Colombia</title>
-<meta name="description" content="Desarrollador web freelance en Pasto, Nariño. Construyo páginas web modernas, rápidas y a medida para negocios y emprendedores. Sitios reales entregados, precios claros en COP.">
-<meta property="og:title" content="Cristhian Sánchez — Desarrollo Web">
-<meta property="og:description" content="Páginas web modernas y a medida para negocios en Colombia. Mira los sitios que he construido.">
+<title>Crysnext — Soluciones Digitales en Pasto, Colombia</title>
+<meta name="description" content="Crysnext: páginas web, landing pages, menús digitales y soluciones a medida para negocios en Colombia. Diseño moderno, código propio, atención directa por WhatsApp.">
+<meta property="og:title" content="Crysnext — Soluciones Digitales">
+<meta property="og:description" content="Páginas web modernas y a medida para negocios en Colombia. Mira los sitios que hemos construido.">
 <meta property="og:type" content="website">
+<link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Cristhian Sánchez</a>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-icon" style="width:36px;height:36px;border-radius:9px;overflow:hidden;background-image:url('logo.png');background-size:108px 108px;background-position:-34px -23px;background-repeat:no-repeat;flex-shrink:0;"></span>
+    <span class="nav-logo-text">crys<span class="accent">next</span></span>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#services">Servicios</a></li>
     <li><a href="#projects">Proyectos</a></li>
     <li><a href="#pricing">Precios</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
+  <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web" target="_blank" class="nav-cta">Cotizar</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <svg class="hero-mark" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="heroMarkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#38d9f5"/>
+        <stop offset="100%" stop-color="#3b7cf0"/>
+      </linearGradient>
+    </defs>
+    <path d="M180 40 L180 160 L100 160 L60 200 L100 240 L180 240 L180 360 L280 200 Z" fill="url(#heroMarkGrad)"/>
+    <path d="M292 140 L354 200 L292 260 L250 260 L312 200 L250 140 Z" fill="url(#heroMarkGrad)"/>
+  </svg>
   <div class="hero-content">
-    <div class="hero-tag fade-up">Desarrollo Web · Pasto, Colombia · 18 años</div>
-    <h1 class="fade-up d1">Tu página web,<br><em>hecha con cuidado</em></h1>
+    <div class="eyebrow fade-up"><span class="dot"></span>Pasto, Nariño · Soluciones Digitales</div>
+    <h1 class="fade-up d1">Tu negocio,<br><span class="grad">una nueva etapa digital</span></h1>
     <p class="hero-desc fade-up d2">
-      Hola, soy Cristhian — estudiante de Ingeniería de Software y desarrollador web.
-      Construyo sitios modernos, rápidos y bien diseñados. Atención personalizada,
-      precios honestos y te respondo rápido.
+      Soy <strong>Cristhian Sánchez</strong>, fundador de <strong>Crysnext</strong>. Construyo páginas web,
+      landing pages y soluciones digitales a medida para negocios en Colombia — diseño moderno,
+      código propio y atención personalizada de principio a fin.
     </p>
     <div class="hero-cta fade-up d3">
-      <a href="#projects" class="btn btn-gold">Ver mi trabajo</a>
-      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web" target="_blank" class="btn btn-outline">Cotizar por WhatsApp</a>
+      <a href="#projects" class="btn btn-gold">Ver proyectos</a>
+      <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web" target="_blank" class="btn btn-outline">Cotizar por WhatsApp</a>
+    </div>
+    <div class="hero-meta fade-up d3">
+      <div><span>7+</span> páginas entregadas</div>
+      <div><span>&lt;2h</span> tiempo de respuesta</div>
+      <div><span>100%</span> diseño a medida</div>
     </div>
   </div>
   <div class="hero-scroll">scroll</div>
@@ -46,28 +66,28 @@
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="section-label">Sobre mí</div>
-  <h2>Un desarrollador <em>honesto</em></h2>
+  <div class="eyebrow">Sobre Crysnext</div>
+  <h2>La marca detrás <span class="grad">del código</span></h2>
   <div class="about-grid">
     <div class="about-text">
       <p>
-        Soy <strong>Cristhian David Sánchez Linares</strong>, tengo 18 años y estoy
-        cursando tercer semestre de <strong>Ingeniería de Software en la UCC</strong>, Pasto.
-        Llevo un año construyendo páginas web y cada proyecto me enseña algo nuevo.
+        <strong>Crysnext</strong> nace como la marca de soluciones digitales de
+        <strong>Cristhian David Sánchez Linares</strong>, estudiante de tercer semestre de
+        <strong>Ingeniería de Software en la UCC</strong>, Pasto. Detrás de cada proyecto hay
+        una sola persona construyendo con cuidado, sin intermediarios.
       </p>
       <p>
-        Trabajo con <strong>HTML, CSS, JavaScript y GitHub</strong>. Me gusta que las cosas
-        se vean bien y funcionen perfecto en cualquier dispositivo. Soy rápido
-        respondiendo mensajes y me tomo en serio cada trabajo.
+        Trabajo con <strong>HTML, CSS, JavaScript y GitHub</strong>, y estoy ampliando el stack
+        hacia React y Node.js. Me importa que cada sitio se vea bien, cargue rápido y funcione
+        perfecto en cualquier dispositivo.
       </p>
       <div class="highlight-box">
         <p>
-          Soy transparente: estoy empezando mi carrera y mis precios lo reflejan.
-          Eso significa atención directa, dedicación total a tu proyecto y cero
-          intermediarios — tratas conmigo de principio a fin.
+          Crysnext está empezando y mis precios lo reflejan: atención directa, dedicación total
+          a tu proyecto y trato claro de principio a fin — hablas conmigo, no con un intermediario.
         </p>
       </div>
-      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20quiero%20hablar%20de%20mi%20proyecto" target="_blank" class="btn btn-outline">Hablemos por WhatsApp →</a>
+      <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20quiero%20hablar%20de%20mi%20proyecto" target="_blank" class="btn btn-outline">Hablemos por WhatsApp →</a>
     </div>
     <div class="about-stats">
       <div class="stat">
@@ -90,7 +110,7 @@
   </div>
 
   <br><br>
-  <div class="section-label">Lo que manejo</div>
+  <div class="eyebrow">Stack técnico</div>
   <div class="stack-grid">
     <span class="tag">HTML5</span>
     <span class="tag">CSS3</span>
@@ -103,13 +123,60 @@
     <span class="tag learning">React · aprendiendo</span>
     <span class="tag learning">Node.js · aprendiendo</span>
   </div>
-  <p style="margin-top:0.9rem; font-size:0.75rem; color:var(--muted); font-family:var(--ff-mono);">* punteado = actualmente en proceso de aprendizaje</p>
+  <p style="margin-top:0.9rem; font-size:0.75rem; color:var(--muted-dim); font-family:var(--ff-mono);">* punteado = actualmente en proceso de aprendizaje</p>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="eyebrow">Servicios</div>
+  <h2>Lo que <span class="grad">construyo</span> para tu negocio</h2>
+  <p style="color:var(--muted); font-size:0.87rem; margin-top:0.3rem; max-width:560px; line-height:1.7;">
+    Empezamos con lo esencial y crecemos según lo que tu negocio necesite.
+  </p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+      </div>
+      <div class="service-name">Páginas Web</div>
+      <p class="service-desc">Sitios profesionales, rápidos e intuitivos, diseñados para proyectar confianza y autoridad.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+      </div>
+      <div class="service-name">Landing Pages</div>
+      <p class="service-desc">Páginas enfocadas 100% en conversión, para captar prospectos y potenciar campañas.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/></svg>
+      </div>
+      <div class="service-name">Menús Digitales QR</div>
+      <p class="service-desc">Experiencias ágiles y modernas para restaurantes y comercios gastronómicos.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </div>
+      <div class="service-name">Catálogos Digitales</div>
+      <p class="service-desc">Muestra tus productos de forma atractiva e interactiva, accesible desde cualquier dispositivo.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </div>
+      <div class="service-name">Soluciones para Negocios</div>
+      <p class="service-desc">Herramientas personalizadas para resolver necesidades digitales específicas de tu empresa o emprendimiento.</p>
+    </div>
+  </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">Trabajo</div>
-  <h2>Páginas que <em>he construido</em></h2>
+  <div class="eyebrow">Trabajo</div>
+  <h2>Páginas que <span class="grad">he construido</span></h2>
   <p style="color:var(--muted); font-size:0.87rem; margin-top:0.3rem; max-width:520px; line-height:1.7;">
     Páginas web que he construido, algunas para negocios reales y otras como proyectos de práctica.
     Clic en cada tarjeta para verlas en vivo.
@@ -159,7 +226,7 @@
       </div>
       <div class="project-card-body">
       <div class="project-num">003</div>
-      <div class="project-title">NovaCel Center</div>
+      <div class="project-title">Celltronik Center</div>
       <p class="project-desc">Sitio para una tienda de tecnología con sedes en Armenia (Quindío) y Medellín. Catálogo organizado por marca y condición (nuevo, exhibición, usado), con foco en iPhones y MacBooks entre otras marcas.</p>
       <div class="project-tags">
         <span class="project-tag">HTML</span>
@@ -243,8 +310,8 @@
       </div>
     </a>
 
-    <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20quiero%20una%20p%C3%A1gina%20web" target="_blank" class="project-cta">
-      <div style="font-family:var(--ff-display); font-size:1.05rem; margin-bottom:0.7rem;">¿Quieres tener presencia en internet?</div>
+    <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20quiero%20una%20p%C3%A1gina%20web" target="_blank" class="project-cta">
+      <div style="font-family:var(--ff-display); font-size:1.05rem; font-weight:700; margin-bottom:0.7rem;">¿Quieres tener presencia en internet?</div>
       <p style="font-size:0.81rem; color:var(--muted); margin-bottom:1.4rem; max-width:200px;">Cuéntame tu idea y lo construimos juntos</p>
       <span class="btn btn-outline" style="font-size:0.72rem; padding:0.6rem 1.5rem;">Cotizar por WhatsApp →</span>
     </a>
@@ -254,8 +321,8 @@
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
-  <div class="section-label">Inversión</div>
-  <h2>Precios <em>claros y justos</em></h2>
+  <div class="eyebrow">Inversión</div>
+  <h2>Precios <span class="grad">claros y justos</span></h2>
   <p style="color:var(--muted); max-width:580px; margin-top:0.4rem; font-size:0.87rem; line-height:1.75;">
     Precios en pesos colombianos. <strong style="color:var(--white);">Dominio y hosting del primer año incluidos en todos los planes.</strong>
     Hablo contigo antes de empezar, entiendo lo que necesitas y te doy un valor exacto.
@@ -270,7 +337,7 @@
       <p class="pricing-desc">Una sola página para presentar tu negocio o emprendimiento. Ideal para tener presencia rápida en internet.</p>
       <div class="pricing-price">
         <span class="price-from">desde</span>
-        <span class="price-amount">$500.000</span>
+        <span class="price-amount">$400.000</span>
         <span class="price-from">COP</span>
       </div>
       <ul class="pricing-features">
@@ -282,7 +349,7 @@
         <li>Dominio + hosting primer año <span class="included-badge">incluido</span></li>
         <li>Entrega en 5–8 días hábiles</li>
       </ul>
-      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20una%20Landing%20Page" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+      <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20me%20interesa%20una%20Landing%20Page" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
     </div>
 
     <!-- SITIO WEB -->
@@ -306,7 +373,7 @@
         <li>Soporte 15 días tras la entrega</li>
         <li>Entrega en 10–15 días hábiles</li>
       </ul>
-      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20un%20Sitio%20Web" target="_blank" class="btn btn-gold" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+      <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20me%20interesa%20un%20Sitio%20Web" target="_blank" class="btn btn-gold" style="width:100%; text-align:center; display:block;">Cotizar →</a>
     </div>
 
     <!-- CON FUNCIONALIDADES -->
@@ -329,13 +396,13 @@
         <li>Soporte 30 días post-entrega</li>
         <li>Tiempo según el proyecto</li>
       </ul>
-      <a href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20un%20sitio%20con%20funcionalidades" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
+      <a href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20me%20interesa%20un%20sitio%20con%20funcionalidades" target="_blank" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Cotizar →</a>
     </div>
 
   </div>
 
   <br><br>
-  <div class="section-label">Servicios adicionales</div>
+  <div class="eyebrow">Servicios adicionales</div>
   <div class="addons-grid">
     <div class="addon">
       <div class="addon-label">Cambios</div>
@@ -363,9 +430,9 @@
     </div>
   </div>
 
-  <div style="margin-top:2rem; padding:1.2rem 1.8rem; border:1px solid var(--border); background:rgba(201,169,110,0.04); max-width:620px;">
-    <p style="font-size:0.81rem; color:var(--muted); line-height:1.75;">
-      <strong style="color:var(--white); font-weight:500;">¿Cómo funciona?</strong> Primero hablamos por WhatsApp, entiendo tu proyecto y te doy un precio
+  <div class="info-box">
+    <p>
+      <strong>¿Cómo funciona?</strong> Primero hablamos por WhatsApp, entiendo tu proyecto y te doy un precio
       exacto antes de empezar. Puedo recibir pago por Nequi, Bancolombia o efectivo.
       Pago dividido disponible: 50% al inicio, 50% al entregar. El dominio y hosting del primer año
       van incluidos en el precio — no tienes que pagar nada aparte.
@@ -375,38 +442,48 @@
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
-  <div class="section-label">Contacto</div>
-  <h2>Hablemos de <em>tu proyecto</em></h2>
+  <div class="eyebrow">Contacto</div>
+  <h2>Hablemos de <span class="grad">tu proyecto</span></h2>
   <div class="contact-grid">
 
     <div class="contact-info">
       <p>
-        La forma más rápida de hablar conmigo es por WhatsApp. Te respondo en menos de 2 horas,
+        La forma más rápida de hablar con Crysnext es por WhatsApp. Te respondo en menos de 2 horas,
         sin tecnicismos ni rodeos. Cuéntame tu idea y lo miramos juntos.
       </p>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:cristhiansanchez.linares@gmail.com">
+        <a class="contact-link" href="mailto:crysnext07@gmail.com">
           <span class="contact-link-label">Email</span>
-          cristhiansanchez.linares@gmail.com
+          crysnext07@gmail.com
         </a>
-        <a class="contact-link" href="https://wa.me/573207175728" target="_blank">
+        <a class="contact-link" href="https://wa.me/573188117363" target="_blank">
           <span class="contact-link-label">WhatsApp</span>
-          320 717 5728
-        </a>
-        <a class="contact-link" href="https://github.com/cristhiandavid" target="_blank">
-          <span class="contact-link-label">GitHub</span>
-          github.com/cristhiandavid
+          318 811 7363
         </a>
         <a class="contact-link">
           <span class="contact-link-label">Ubicación</span>
           Pasto, Nariño — Colombia
         </a>
       </div>
+      <div class="social-row">
+        <a class="social-icon" href="https://www.instagram.com/crysnext07/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.facebook.com/profile.php?id=61593515010387" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l.5-3.5H13V7.2c0-1 .3-1.7 1.8-1.7H17V2.1C16.6 2 15.4 1.9 14 1.9c-2.9 0-4.8 1.8-4.8 5v2.6H6V13h3.2v9H13z"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.tiktok.com/@crysnext" target="_blank" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.3 2 1.8 3.6 3.8 3.9v3a7.6 7.6 0 0 1-3.8-1v6.7a5.9 5.9 0 1 1-5.9-5.9c.3 0 .6 0 .9.1v3.1a2.8 2.8 0 1 0 2 2.7V2h3z"/></svg>
+        </a>
+        <a class="social-icon" href="https://wa.me/573188117363" target="_blank" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- WhatsApp CTA panel -->
+    <!-- CTA WhatsApp panel -->
     <div class="wa-panel">
-      <div class="wa-panel-title">¿Listo para tener tu<br><em>página web?</em></div>
+      <div class="wa-panel-title">¿Listo para tener tu<br><span class="grad">página web?</span></div>
       <p class="wa-panel-desc">
         Escríbeme directo por WhatsApp. No necesitas llenar formularios
         ni esperar días — hablamos ahora y arrancamos cuando quieras.
@@ -426,7 +503,7 @@
         </li>
       </ul>
       <a
-        href="https://wa.me/573207175728?text=Hola%20Cristhian%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web.%20Tengo%20un%20negocio%20de%3A%20"
+        href="https://wa.me/573188117363?text=Hola%20Crysnext%2C%20me%20interesa%20una%20cotizaci%C3%B3n%20para%20mi%20p%C3%A1gina%20web.%20Tengo%20un%20negocio%20de%3A%20"
         target="_blank"
         class="wa-big-btn"
       >
@@ -442,7 +519,21 @@
 </section>
 
 <footer>
-  <p>© 2026 Cristhian David Sánchez Linares</p>
+  <div class="footer-brand">
+    <img src="logo.png" alt="Crysnext" style="width:26px;height:26px;object-fit:contain;border-radius:6px;">
+    <p>© 2026 Crysnext — Cristhian David Sánchez Linares</p>
+  </div>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/crysnext07/" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61593515010387" target="_blank" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l.5-3.5H13V7.2c0-1 .3-1.7 1.8-1.7H17V2.1C16.6 2 15.4 1.9 14 1.9c-2.9 0-4.8 1.8-4.8 5v2.6H6V13h3.2v9H13z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@crysnext" target="_blank" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.3 2 1.8 3.6 3.8 3.9v3a7.6 7.6 0 0 1-3.8-1v6.7a5.9 5.9 0 1 1-5.9-5.9c.3 0 .6 0 .9.1v3.1a2.8 2.8 0 1 0 2 2.7V2h3z"/></svg>
+    </a>
+  </div>
   <p>Hecho con dedicación desde Pasto, Colombia 🇨🇴</p>
 </footer>
 
