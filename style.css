@@ -145,6 +145,7 @@ h1 .grad { background: var(--grad); -webkit-background-clip: text; background-cl
 
 /* SECTIONS */
 section { padding: 7rem 4rem; }
+section[id] { scroll-margin-top: 90px; }
 h2 {
   font-family: var(--ff-display); font-size: clamp(1.7rem, 3.2vw, 2.6rem);
   font-weight: 700; line-height: 1.15; margin-bottom: 1rem; letter-spacing: -0.01em;
